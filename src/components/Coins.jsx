@@ -1,11 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CoinItem from './CoinItem'
 import './Coins.css'
 import { Link } from 'react-router-dom'
 
 export default function Coins(props) {
-  return (
-    <div className='container'>
+ 
+  const [query, setQuery]=useState('') 
+
+  function onSearch(e){
+    setQuery(e.target.value)
+  }
+  function getFilteredCoins(query,allcoins){
+    if(!query){
+      return allcoins
+    }
+    return allcoins.filter((singlecoin)=>{
+      return singlecoin.id.includes(query)
+    })
+  }
+  const filteredCoins= getFilteredCoins(query,props.coins)
+  console.log(filteredCoins)
+  return ( <>
+  <div className="container">
+    <div className="search">
+      <input 
+      className='searchbar' 
+      type="text" 
+      value={query}
+      placeholder='Search here...'
+      onChange={onSearch}
+      />
+    </div>
+  </div>
+   <div className='container'>
         <div>
             <div className="heading">
                 <p>#</p>
@@ -16,7 +43,7 @@ export default function Coins(props) {
                 <p className='hide-mobile'>Mkt Cap</p>
             </div>
 
-            {props.coins.map((coin)=>{
+            {filteredCoins.map((coin)=>{
                 return  <Link to={"/coin/"+coin.id} key={coin.id}>
                      <CoinItem coins={coin} key={coin.id}></CoinItem>
                   </Link> 
@@ -24,5 +51,7 @@ export default function Coins(props) {
 
         </div>
     </div>
+  </>
+   
   )
 }
