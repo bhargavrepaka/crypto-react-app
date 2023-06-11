@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import DOMpurify from "isomorphic-dompurify"
 import './Coin.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'react-router-dom'
+
 
 
 export default function Coin() {
@@ -33,7 +36,10 @@ export default function Coin() {
                 ) : (<>
 
                     <div className="content">
-                        <h1>{coin.id.toUpperCase()}</h1>
+                        <div className="heading-items">
+                            <Link to={"/"}><button className='backbtn'>Back</button></Link>
+                            <h1>{coin.id.toUpperCase()}</h1>
+                        </div>   
                     </div>
                     <div className="content">
                         <div className="rank">

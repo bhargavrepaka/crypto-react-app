@@ -8,6 +8,20 @@
     box-shadow: 0px 0px 12px #18191b;
     border-radius: 8px;
 }
+.heading-items{
+    position: relative;
+
+}
+.backbtn{
+    position: absolute;
+    top: 25%;
+    background-color: #333;
+    padding: 8px;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+
+}
 
 .rank{
     margin:5px ;
@@ -86,5 +100,13 @@ th{
 
     td,th{
         padding: 3px;
+    }
+    .coin-price{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .coin-price h1{
+        font-size: 20px;
     }
 }
